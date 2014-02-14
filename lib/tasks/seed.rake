@@ -31,7 +31,7 @@ namespace :db do
     elsif Rails.version > '3'
       original_seeds_file = Rails.application.paths["db/seeds"].existent.first
     else
-      original_seeds_file = Rails.root.join("db","seeds").children.first.to_s
+      original_seeds_file = Dir[File.join(Rails.root, 'db', 'seeds', '*rb')].first
     end
     define_seed_task original_seeds_file, :original if original_seeds_file
   end
